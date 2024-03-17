@@ -1,0 +1,56 @@
+.header-wrapper {
+    max-width: 1280px; /* Set the maximum width */
+    margin: 0 auto; /* Center the container */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+}
+
+.categories {
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.search-field input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.search-field button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-register-container {
+    display: flex;
+    margin-left: auto; /* This will push the container to the right */
+}
+
+.login-register-label {
+    font-size: 20px;
+    color: #333;
+    margin-left: 10px;
+    cursor: pointer;
+}
