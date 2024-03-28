@@ -1,46 +1,70 @@
-.books-container {
-    display: flex;
+.home-container {
     flex-wrap: wrap;
     justify-content: space-between; /* Adjust as needed */
     max-width: 1280px; /* Set the maximum width */
+    margin: 0 auto; /* Center the container */
+}
+
+
+.hr-text-hr {
+    display: flex;
+    align-items: center;
+}
+
+.hr-line {
+    flex-grow: 1;
+    border-top: 1px solid #c0c0c0; /* Adjust color and thickness as needed */
+    margin: 0 10px; /* Adjust margin as needed */
+}
+
+.hr-text {
+    font-size: 22px; /* Adjust font size as needed */
 }
 
 .book {
-    width: calc(33.33% - 20px); /* Adjust width as needed */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
+    display: inline-block; /* Set to inline-block */
+    padding: 20px;
+    vertical-align: top; /* Align the books at the top */
+}
+
+.book:hover {
+    border: 1px solid #bdbdbd;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .book img {
-    width: 100%;
+    width: 172px;
     height: auto;
-    margin-bottom: 10px;
 }
 
 .book-details {
+    flex-grow: 1;
     text-align: center;
 }
 
 .book-title {
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 0;
+    margin-bottom: 0;
+    margin: 5px 0;
 }
 
 .book-author {
     font-style: italic;
     color: #666;
-}
-
-.book-description {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #333;
+    margin: 5px 0;
 }
 
 .book-price {
     font-weight: bold;
-    margin-top: 10px;
+    margin: 5px 0;
+}
+
+.images img {
+    margin-left: 5px; /* Add some space between the price and icons */
+    vertical-align: middle; /* Align icons vertically with text */
+    cursor: pointer; /* Add pointer cursor to indicate interactivity */
+    width: 30px;
+    height: 30px;
 }
