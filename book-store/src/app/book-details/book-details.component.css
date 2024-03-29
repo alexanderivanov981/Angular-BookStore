@@ -1,0 +1,24 @@
+.book-container {
+    display: flex;
+    align-items: center;
+}
+
+.book-cover img {
+    max-width: 200px; /* Adjust as needed */
+    height: auto;
+    margin-right: 20px; /* Adjust spacing between cover and info */
+}
+
+.book-info {
+    flex-grow: 1;
+}
+
+.book-info h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.book-info p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}

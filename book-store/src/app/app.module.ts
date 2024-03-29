@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CategoriesDropdownComponent } from './categories-dropdown/categories-dropdown.component';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     HomeComponent,
     CategoriesDropdownComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
