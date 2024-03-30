@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  
+  processUserInput(username: string, email: string, password: string) : void
+  {
+    console.log('Username:', username);
+  }
 
 }

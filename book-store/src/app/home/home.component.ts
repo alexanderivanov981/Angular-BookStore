@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit{
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
-    debugger;
     this.readAllBooks();
   }
 
