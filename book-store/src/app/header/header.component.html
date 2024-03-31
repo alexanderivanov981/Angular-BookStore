@@ -9,9 +9,14 @@
             <button type="submit">Search</button>
         </form>
 
-        <div class="login-register-container">
-            <span class="login-register-label" routerLink="/login">Login</span>
-            <span class="login-register-label" routerLink="/register">Register</span>
+        <div class="user-section">
+            <div *ngIf="!authentication.isLoggedIn" class="login-register-container">
+                <span class="login-register-label" routerLink="/login">Login</span>
+                <span class="login-register-label" routerLink="/register">Register</span>
+            </div>
+            <div *ngIf="authentication.isLoggedIn" class="profile-container">
+                <app-user-profile />
+            </div>
         </div>
     </header>
 </div>

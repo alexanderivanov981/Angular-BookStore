@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
   books: Book[] = [];
-  favoritesIconUrl : string = "https://static-00.iconduck.com/assets.00/heart-icon-512x441-zviestnn.png";
-  cartIconUrl: string = "https://static.vecteezy.com/system/resources/previews/027/381/351/original/shopping-cart-icon-shopping-trolley-icon-shopping-cart-logo-container-for-goods-and-products-economics-symbol-design-elements-basket-symbol-silhouette-retail-design-elements-vector.jpg";
-
+  favoritesIconUrl : string = "https://static.vecteezy.com/system/resources/previews/010/158/312/original/heart-icon-sign-symbol-design-free-png.png";
+  cartIconUrl: string = "https://static.vecteezy.com/system/resources/previews/019/787/018/original/shopping-cart-icon-shopping-basket-on-transparent-background-free-png.png";
+  
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit{
     this.bookService.getAllBooks().subscribe(
       (books: Book[]) => {
         this.books = books;
-        console.log('Fetched books:', this.books);
       }
     );
   }

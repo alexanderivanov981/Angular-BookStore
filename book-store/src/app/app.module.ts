@@ -11,6 +11,15 @@ import { CategoriesDropdownComponent } from './categories-dropdown/categories-dr
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmailValidatorDirective } from './register/email-validator.directive';
+import { SuccessfulRegistrationComponent } from './successful-registration/successful-registration.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserDetailsComponent } from './user-profile/my-profile/my-profile.component';
+import { FavoritesComponent } from './user-profile/favorites/favorites.component';
+import { CartComponent } from './user-profile/cart/cart.component';
+import { DeleteProfileComponent } from './user-profile/delete-profile/delete-profile.component';
+import { LogoutComponent } from './user-profile/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +30,21 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     HomeComponent,
     CategoriesDropdownComponent,
     RegisterComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    EmailValidatorDirective,
+    SuccessfulRegistrationComponent,
+    UserProfileComponent,
+    UserDetailsComponent,
+    FavoritesComponent,
+    CartComponent,
+    DeleteProfileComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

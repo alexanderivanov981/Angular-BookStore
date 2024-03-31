@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>My profile</h2>
+  </div>
+  
+  <div class="my-profile">
+    <div class="profile-sections">
+      <div routerLink="/favorites" class="profile-section">
+        <div class="section-content">
+          <img [src]="favoritesIconUrl" alt="Heart Icon" class="favorite-icon ">
+          <h3>Favorites</h3>
+        </div>
+      </div>
+      <div class="profile-section">
+        <div routerLink="/cart" class="section-content">
+          <img [src]="cartIconUrl" alt="Cart Icon" class="cart-icon ">
+          <h3>Cart</h3>
+        </div>
+      </div>
+      <div class="profile-section">
+        <div class="section-content">
+          <img [src]="logoutIconUrl" alt="Logout Icon" class="logout-icon ">
+          <h3>Logout</h3>
+        </div>
+      </div>
+    </div>
+  </div>

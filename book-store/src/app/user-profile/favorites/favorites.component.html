@@ -1,10 +1,5 @@
-<div class="home-container">
-    <div class="hr-text-hr">
-        <hr class="hr-line">
-        <span class="hr-text">All Books</span>
-        <hr class="hr-line">
-    </div>      
-
+<div class="container">
+    <h2>Favorite books</h2>
     <div class="books-container">
         <div class="book" *ngFor="let book of books" (click)="navigateToBookDetails(book.id)">
             <img [src]="book.coverUrl" alt="Book Cover">
@@ -19,10 +14,4 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Something similar will later be used to display more info about the book on click
-        <button (click)="showBook(37)">Click</button>
-    <div *ngIf="bookHTML$ | async as bookHTML" [innerHTML]="bookHTML"></div>
-    -->
 </div>
