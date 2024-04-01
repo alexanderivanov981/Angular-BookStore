@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between; /* Align items to the left and right */
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
     margin-bottom: 10px;
 }
@@ -17,33 +17,6 @@
     font-weight: bold;
     color: #333;
     margin-right: 20px;
-    cursor: pointer;
-}
-
-.categories {
-    font-size: 25px;
-}
-
-.search-field {
-    flex-grow: 1; /* Allow the search field to grow and take up available space */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the search field and button */
-}
-
-.search-field input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 5px;
-}
-
-.search-field button {
-    padding: 8px 12px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
     cursor: pointer;
 }
 

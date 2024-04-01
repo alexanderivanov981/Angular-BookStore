@@ -9,17 +9,20 @@ import { UserDetailsComponent } from './user-profile/my-profile/my-profile.compo
 import { FavoritesComponent } from './user-profile/favorites/favorites.component';
 import { CartComponent } from './user-profile/cart/cart.component';
 import { DeleteProfileComponent } from './user-profile/delete-profile/delete-profile.component';
+import { AuthGuard } from './home/auth-guard';
+import { NoPermissionsComponent } from './no-permissions/no-permissions.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'book/:id', component: BookDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'successful-registration', component: SuccessfulRegistrationComponent },
-  { path: 'my-profile', component: UserDetailsComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'delete-profile', component: DeleteProfileComponent }
+  { path: 'successful-registration', component: SuccessfulRegistrationComponent, canActivate: [AuthGuard] },
+  { path: 'my-profile', component: UserDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'delete-profile', component: DeleteProfileComponent, canActivate: [AuthGuard] },
+  { path: 'no-permissions', component: NoPermissionsComponent }
 ];
 
 @NgModule({

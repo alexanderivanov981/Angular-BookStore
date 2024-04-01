@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../home/user.service';
-import { User } from '../home/user';
-import { AuthenticationService } from '../home/authentication.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../home/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,25 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  username: string = "";
+  password: string = "";
 
-  constructor(private userService: UserService,
-    private authentication: AuthenticationService,
-    private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  onLogin(username: string, password: string): void {
-    this.userService.login(username, password).subscribe(
-      (user: User) => {
-        // Handle the user response here
-        this.authentication.login();
-        this.authentication.currentUserId = user.id;
-        this.authentication.currentUsername = user.username;
-        this.authentication.user = user;
-        this.router.navigate(['/']);
-        console.log('User found:', user);
+  login() {
+    this.authService.login(this.username, this.password).subscribe(
+      () => {
+        console.log('Login successful');
+        this.router.navigate(["/"]);
       },
       (error) => {
-        // Handle errors here
-        console.error('Error:', error);
+        console.error('Login failed:', error);
       }
     );
   }

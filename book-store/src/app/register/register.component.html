@@ -1,6 +1,6 @@
 <div class="register-container">
     <h2>Register</h2>
-    <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)">
+    <form #registerForm="ngForm">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" ngModel required #username>
@@ -13,6 +13,6 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" ngModel required minlength="6" #password>
         </div>
-        <button type="submit">Register</button>
+        <button (click)="registerUser(registerForm, username.value, email.value, password.value)" type="submit">Register</button>
     </form>
 </div>

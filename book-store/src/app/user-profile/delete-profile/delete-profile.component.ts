@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/home/authentication.service';
+import { AuthService } from 'src/app/home/auth.service';
+import { User } from 'src/app/home/user';
 import { UserService } from 'src/app/home/user.service';
 
 @Component({
@@ -11,18 +12,23 @@ import { UserService } from 'src/app/home/user.service';
 export class DeleteProfileComponent {
   password: string = '';
 
-  constructor(private router: Router, private authService: AuthenticationService, private userService: UserService) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
-  confirmDeletion(password: string): void {
-    this.userService.getUser(this.authService.currentUsername).subscribe((user) => {
-      if (user.password == password) {
-        this.userService.deleteUser(this.authService.currentUserId).subscribe(() => {
-          console.log('User successfully deleted.');
+  deleteUser(password: string): void {
+    const user: User | null = this.authService.getCurrentUser();
+    if (user)
+    {
+      this.userService.deleteUser(user.id, password).subscribe(
+        () => {
+          console.log(`User with ID ${11} deleted successfully.`);
           this.authService.logout();
-          this.router.navigate(['/']);
-        });
-      }
-    });
+          this.router.navigate(['/']); // Navigate home.
+        },
+        (error) => {
+          console.error('Error deleting user:', error);
+        }
+      );
+    }
   }
 
 }

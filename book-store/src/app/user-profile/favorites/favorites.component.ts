@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/home/authentication.service';
+import { AuthService } from 'src/app/home/auth.service';
 import { Book } from 'src/app/home/book';
+import { User } from 'src/app/home/user';
 import { UserService } from 'src/app/home/user.service';
 
 @Component({
@@ -11,23 +12,67 @@ import { UserService } from 'src/app/home/user.service';
 })
 export class FavoritesComponent {
   books: Book[] = [];
-  favoritesIconUrl: string = "https://static.vecteezy.com/system/resources/previews/010/158/312/original/heart-icon-sign-symbol-design-free-png.png";
+  favoritesIconUrl: string = "assets/images/heart-icon-red.jpg";
   cartIconUrl: string = "https://static.vecteezy.com/system/resources/previews/019/787/018/original/shopping-cart-icon-shopping-basket-on-transparent-background-free-png.png";
 
-  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private router: Router, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // Fetch favorite books data from your service or any other source
     this.fetchFavoriteBooks();
   }
 
   fetchFavoriteBooks() {
-    this.userService.getFavoriteBooks(this.authService.currentUserId).subscribe(
-      (books: Book[]) => {
-        this.books = books;
-      }
-    );
-    debugger;
+    const user: User | null = this.authService.getCurrentUser();
+    if (user)
+    {
+      this.userService.getFavoriteBooks(user.id).subscribe(
+        (books: Book[]) => {
+          this.books = books;
+        }
+      );
+    }
+  }
+
+  removeBookFromFavorites(event: MouseEvent, book: Book): void {
+    const index: number = this.books.indexOf(book);
+    if (index !== -1) {
+        this.books.splice(index, 1);
+    }  
+
+    event.stopPropagation();
+    const user: User | null = this.authService.getCurrentUser();
+    if (user)
+    {
+      this.userService.removeFromFavorites(user.id, book.id)
+      .subscribe(
+        () => {
+          console.log('Book removed from favorites successfully.');
+          this.cd.detectChanges(); // Assuming you need to detect changes here
+        },
+        error => {
+          console.error('Error removing book from favorites:', error);
+          // Handle error as needed
+        }
+      );
+    }
+  }
+
+  addToCart(event: MouseEvent, book: Book): void {
+    event.stopPropagation();
+
+    const user: User | null = this.authService.getCurrentUser();
+    if (user)
+    {
+      this.userService.addToCart(user.id, book.id)
+      .subscribe(
+        () => {
+          console.log('Book added to cart.');
+        },
+        error => {
+          console.error('Failed to add book to cart.')
+        }
+      );
+    }
   }
 
   navigateToBookDetails(bookId: number): void {

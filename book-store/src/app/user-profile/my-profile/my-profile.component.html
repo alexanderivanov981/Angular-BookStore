@@ -17,9 +17,15 @@
         </div>
       </div>
       <div class="profile-section">
-        <div class="section-content">
+        <div (click)="logout()" class="section-content">
           <img [src]="logoutIconUrl" alt="Logout Icon" class="logout-icon ">
           <h3>Logout</h3>
+        </div>
+      </div>
+      <div class="profile-section">
+        <div routerLink="/delete-profile" class="section-content">
+          <img [src]="deleteProfileIconUrl" alt="Delete Profile Icon" class="delete-profile-icon">
+          <h3>Delete Profile</h3>
         </div>
       </div>
     </div>

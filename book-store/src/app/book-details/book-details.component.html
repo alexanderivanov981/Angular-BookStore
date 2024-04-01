@@ -14,7 +14,7 @@
     <div class="additional-info">
         <div class="price">${{ book.price }}</div>
         <div class="button-container">
-            <button class="add-to-cart-btn">Add to Cart</button>
+            <button (click)="addToCart(book.id)" class="add-to-cart-btn">Add to Cart</button>
         </div>
         <div class="button-container">
             <button (click)="addToFavorites(book.id)">Add to Favorites</button>

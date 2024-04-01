@@ -8,8 +8,8 @@
                 <p class="book-author">{{ book.author }}</p>
                 <p class="book-price">${{ book.price }}</p>
                 <div class="images">
-                    <img [src]="favoritesIconUrl" alt="Heart Icon">
-                    <img [src]="cartIconUrl" alt="Cart Icon">
+                    <img (click)="removeBookFromFavorites($event, book)" [src]="favoritesIconUrl" alt="Heart Icon" class="heart-icon">
+                    <img (click)="addToCart($event, book)" [src]="cartIconUrl" alt="Cart Icon" class="cart-icon">
                 </div>
             </div>
         </div>

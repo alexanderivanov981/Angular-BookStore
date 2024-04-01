@@ -1,8 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../home/user';
-import { environment } from 'src/environments/environment.development';
+import { AuthService } from '../home/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,26 +10,19 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  constructor (private http: HttpClient, private router: Router) {}
+constructor(private authService: AuthService, private router: Router) {}
 
-  registerUser(registerForm: NgForm) {
+registerUser(registerForm: NgForm, username: string, email: string, password: string): void {
     if (registerForm.valid) {
-      const { username, email, password } = registerForm.value;
-      const user = { username, email, password };
-      const httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      };
-      this.http.post<User>(`${environment.usersAPI}`, user, httpOptions)
-        .subscribe(
-          () => {
-            this.router.navigate(['/successful-registration']);
-          },
-          (error) => {
-            console.error('Error saving to DB:', error);
-          }
-        );
-    } else {
-      console.log('Form is invalid. Please check the fields.');
+      this.authService.register(username, email, password).subscribe(
+        (response) => {
+          console.log('User registered successfully:', response);
+          this.router.navigate(['/successful-registration']);
+        },
+        (error) => {
+          console.error('Error registering user:', error);
+        }
+      );
     }
   }
 }
