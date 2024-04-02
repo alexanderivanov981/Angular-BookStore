@@ -1,0 +1,39 @@
+<div class="book-container">
+    <div class="book-cover">
+        <img [src]="book.coverUrl" alt="Book Cover">
+    </div>
+
+    <div class="book-details">
+        <div class="attribute-list-content">
+            <ul class="attribute-list">
+                <h1>{{ book.title }}</h1>
+                <li>
+                    <strong>Author:</strong>
+                    <span>{{ book.author }}</span>
+                </li>
+                <li>
+                    <strong>Genre:</strong>
+                    <span>{{ book.genre }}</span>
+                </li>
+                <li>
+                    <strong>Pages:</strong>
+                    <span>{{ book.pages }}</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="book-description">
+            <h2>Description</h2>
+            <hr>
+            <p>{{ book.description }}</p>
+        </div>
+    </div>
+
+    <div class="additional-info">
+        <div class="price">${{ book.price }}</div>
+        <div class="button-container">
+            <button (click)="addToCart(book.id)" class="add-to-cart-btn">Add to Cart</button>
+            <button (click)="addToFavorites(book.id)" class="add-to-favorites-btn">Add to Favorites</button>
+        </div>
+    </div>
+</div>

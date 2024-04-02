@@ -1,0 +1,71 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.book {
+  display: inline-block;
+  padding: 20px;
+  vertical-align: top;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.book:hover {
+  border: 1px solid #bdbdbd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+
+.book-cover {
+  width: 172px;
+  height: 265px;
+}
+
+.book-details {
+  flex-grow: 1;
+  max-width: 150px;
+}
+
+.book-title {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin: 5px 0;
+  word-wrap: break-word;
+}
+
+.book-author {
+  font-style: italic;
+  color: #666;
+  margin: 5px 0;
+}
+
+.price-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.book-price {
+  font-weight: bold;
+  margin: 5px 13px 5px 0;
+  font-size: 17px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.favorites-icon {
+  margin-left: 18px; /* Adjust margin as needed */
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+}
+
+.cart-icon {
+  cursor: pointer;
+  width: 72px;
+  height: 72px;
+}

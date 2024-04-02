@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Favorite books</h2>
+
+    <div>
+        <div class="book" *ngFor="let book of books" (click)="navigateToBookDetails(book.id)">
+            <img class="book-cover" [src]="book.coverUrl" alt="Book Cover">
+            <div class="book-details">
+                <h3 class="book-title">{{ book.title }}</h3>
+                <p class="book-author">{{ book.author }}</p>
+                <div class="price-icons-container">
+                    <p class="book-price">${{ book.price }}</p>
+                    <div class="icons">
+                        <img (click)="removeBookFromFavorites($event, book)" [src]="favoritesIconUrl" alt="Heart Icon" class="favorites-icon">
+                        <img (click)="addToCart($event, book.id)" [src]="shoppingCartIconUrl" alt="Cart Icon" class="cart-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

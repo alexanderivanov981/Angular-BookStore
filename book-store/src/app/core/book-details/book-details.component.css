@@ -1,0 +1,113 @@
+.book-container {
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.book-cover {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.book-cover img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.book-details {
+    flex: 0 1 1;
+    font-size: 14px;
+}
+
+.book-description {
+    font-size: 15px;
+    text-transform: none; 
+}
+
+.additional-info {
+    padding: 20px;
+    flex: 0 0 200px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.book-info p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    line-height: 20px;
+    text-transform: none; 
+    font-size: 16px;
+    text-transform: none; 
+    font-family: 'RobotoCondensed';
+}
+
+.price {
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.button-container {
+    margin-bottom: 5px;
+}
+
+.add-to-cart-btn,
+.add-to-favorites-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.add-to-cart-btn {
+    color: white;
+    margin-bottom: 10px;
+    background-color: #4caf50;
+}
+
+.add-to-favorites-btn {
+    color: white;
+    background-color: #008CBA;
+}
+
+.attribute-list-content ul.attribute-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-inline-start: 0;
+}
+
+.attribute-list-content ul.attribute-list li {
+    margin-bottom: 10px;
+}
+
+.attribute-list h1 {
+    margin: 0px 0px 5px 0px;
+    font-size: 35px; 
+    line-height: 30px;
+    text-transform: none; 
+    font-family: 'RobotoCondensed';
+    color: rgb(77, 77, 77);
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.attribute-list-content ul.attribute-list li strong {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.attribute-list-content ul.attribute-list li span {
+    display: inline-block;
+    font-style: italic;
+}
+
+.attribute-list-content ul.attribute-list li a {
+    color: #007bff;
+    text-decoration: none;
+}

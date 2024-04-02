@@ -1,0 +1,17 @@
+<footer class="footer-container">
+    <div class="footer-content">
+        <p>&copy; BOOK Store</p>
+        <nav>
+            <ul>
+                <li routerLink="/">Home</li>
+                <ng-container *ngIf="!authService.isLoggedIn(); else loggedIn">
+                    <li routerLink="/login">Login</li>
+                    <li routerLink="/register">Register</li>
+                </ng-container>
+                <ng-template #loggedIn>
+                    <li routerLink="/my-profile">My Profile</li>
+                </ng-template>
+            </ul>
+        </nav>
+    </div>
+</footer>

@@ -1,0 +1,36 @@
+<div class="register-container">
+    <h2>Register</h2>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control" [(ngModel)]="registerData.username" required #username="ngModel">
+            <div class="error-message" *ngIf="username.invalid && (username.dirty || username.touched)">
+                Username is required.
+            </div>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="registerData.email" required email>
+            <div class="error-message" *ngIf="registerForm.controls['email'].errors?.['required'] && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+              Email is required.
+            </div>
+            <div class="error-message" *ngIf="registerForm.controls['email'].errors?.['email'] && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+              Please enter a valid email address.
+            </div>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="registerData.password" required minlength="6">
+            <div class="error-message" *ngIf="registerForm.controls['password'].errors?.['required'] && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+              Password is required.
+            </div>
+            <div class="error-message" *ngIf="registerForm.controls['password'].errors?.['minlength'] && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+              Password must be at least 6 characters long.
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+    </form>
+</div>
