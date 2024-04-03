@@ -25,8 +25,12 @@ export class LoginComponent {
         this.router.navigate(["/"]);
       },
       (error) => {
+        if (error.status === 401) {
+          this.dbService.openSnackBar('Invalid username or password!', '');
+        } else {
+          this.dbService.openSnackBar('Login failed.', '');
+        }
         console.error(error);
-        this.dbService.openSnackBar('Login failed.', '');
       }
     );
   }

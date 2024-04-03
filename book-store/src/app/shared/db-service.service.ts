@@ -41,7 +41,7 @@ export class DBService {
   }
 
   getFavoriteBooks(userId: number): Observable<Book[]> {
-    return this.http.get<Book[]>(`/api/appusers/${userId}/favorite-books`);
+    return this.http.get<Book[]>(`${environment.usersAPI}/${userId}/favorite-books`);
   }
 
   addToCart(userId: number, bookId: number): Observable<Book> {
@@ -50,6 +50,10 @@ export class DBService {
 
   removeFromCart(userId: number, bookId: number): Observable<User> {
     return this.http.delete<User>(`${environment.usersAPI}/${userId}/cart/${bookId}`);
+  }
+
+  removeAllFromCart(userId: number): Observable<User> {
+    return this.http.delete<User>(`${environment.usersAPI}/${userId}/cart`);
   }
 
   getCartBooks(userId: number): Observable<Book[]> {

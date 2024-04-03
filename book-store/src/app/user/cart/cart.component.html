@@ -16,5 +16,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="place-order-section">
+            <div class="total-sum">Total: <b>${{ calculateTotalSum() | number:'1.2-2' }}</b></div>
+            <div class="buttons-container">
+                <button (click)="placeOrder()" class="place-order-btn">Place order</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { User } from './user';
+import { environment } from 'src/environments/environment.development';
 
 interface LoginResponse {
   token: string;
@@ -21,7 +22,7 @@ export class AuthService {
  
 
   login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>('http://localhost:8080/api/auth/login', { username, password })
+    return this.http.post<LoginResponse>(`${environment.authAPI}/login`, { username, password })
       .pipe(
         tap(response => {
           this.setAuthToken(response.token);
@@ -33,7 +34,7 @@ export class AuthService {
   register(username: string, email: string, password: string): Observable<User> {
     const body = { username, email, password };
     const headers = { 'Content-Type': 'application/json' };
-    return this.http.post<User>('http://localhost:8080/api/auth/register', body, { headers });
+    return this.http.post<User>(`${environment.authAPI}/register`, body, { headers });
   }
 
   private setAuthToken(token: string): void {
@@ -53,7 +54,7 @@ export class AuthService {
     this.user = null; // Clear current user upon logout
   }
 
-  private setUser(user: any): void {
+  private setUser(user: User): void {
     this.user = user;
     localStorage.setItem(this.USER_KEY, JSON.stringify(user)); // Store current user in local storage
   }

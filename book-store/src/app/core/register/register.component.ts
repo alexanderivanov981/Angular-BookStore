@@ -26,8 +26,12 @@ constructor(private authService: AuthService,
         this.router.navigate(['/successful-registration']);
       },
       (error) => {
+        if (error.status === 409) {
+          this.dbService.openSnackBar('Username is taken!', '');
+        } else {
+          this.dbService.openSnackBar('Register failed.', '');
+        }
         console.error(error);
-        this.dbService.openSnackBar('Failed to register user.', '');
       }
     );
   }

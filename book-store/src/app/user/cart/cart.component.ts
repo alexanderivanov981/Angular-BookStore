@@ -84,6 +84,32 @@ export class CartComponent implements OnInit {
     }
   }
 
+  calculateTotalSum(): number {
+    let totalSum = 0;
+    this.cartBooks.forEach(book => {
+      totalSum += book.price;
+    });
+    return totalSum;
+  }
+
+  placeOrder(): void {
+    const user: User | null = this.authService.getCurrentUser();
+    if (user && this.cartBooks.length > 0)
+    {
+      this.dbService.removeAllFromCart(user.id).subscribe(
+        () => {
+          this.cartBooks = [];
+          this.cd.detectChanges();
+          this.dbService.openSnackBar('Order is on the way!', '');
+        },
+        error => {
+          console.error(error);
+          this.dbService.openSnackBar('Failed creating an order!', '');
+        }
+      )
+    }
+  }
+
   navigateToBookDetails(bookId: number): void {
     this.router.navigate(['/book', bookId]);
   }

@@ -1,35 +1,35 @@
 .home-container {
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .hr-text-hr {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .hr-line {
-    flex-grow: 1;
-    border-top: 1px solid #c0c0c0;
-    margin: 0 10px;
+  flex-grow: 1;
+  border-top: 1px solid #c0c0c0;
+  margin: 0 10px;
 }
 
 .hr-text {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .book {
-    display: inline-block;
-    padding: 20px;
-    vertical-align: top;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  padding: 20px;
+  vertical-align: top;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .book:hover {
-    border: 1px solid #bdbdbd;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-    cursor: pointer;
+  border: 1px solid #bdbdbd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  cursor: pointer;
 }
 
 .book-cover {
