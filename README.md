@@ -38,5 +38,5 @@ The frontend of the Book Store project is developed using the Angular framework.
 
 The project follows a modular structure:
 
-- `backend/`: Contains the Spring Boot backend code.
-- `frontend/`: Contains the Angular frontend code.
+- `Backend Spring Boot/`: Contains the Spring Boot backend code.
+- `Angular Frontend/`: Contains the Angular frontend code.
