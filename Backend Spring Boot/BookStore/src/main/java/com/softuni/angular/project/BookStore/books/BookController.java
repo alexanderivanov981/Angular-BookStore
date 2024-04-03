@@ -1,6 +1,7 @@
 package com.softuni.angular.project.BookStore.books;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,11 +30,12 @@ public class BookController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        Book book = bookService.getBookById(id);
-        if (book == null) {
+        Optional<Book> book = bookService.getBookById(id);
+        if (!book.isPresent() ||  book == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(book, HttpStatus.OK);
+        
+        return new ResponseEntity<>(book.get(), HttpStatus.OK);
     }
 
     @PostMapping()

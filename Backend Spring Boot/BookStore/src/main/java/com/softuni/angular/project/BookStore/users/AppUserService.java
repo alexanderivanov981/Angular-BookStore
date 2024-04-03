@@ -1,5 +1,6 @@
 package com.softuni.angular.project.BookStore.users;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -22,22 +23,22 @@ public class AppUserService {
     private BookRepository bookRepository;
 
 
-    public List<AppUsers> getAllUsers() {
+    public List<AppUser> getAllUsers() {
         return userRepository.findAll();
     }
     
 
-    public Optional<AppUsers> getUserById(Long id) {
+    public Optional<AppUser> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
     
-    public AppUsers createUser(AppUsers user) {
+    public AppUser createUser(AppUser user) {
         return userRepository.save(user);
     }
     
 
-    public AppUsers updateUser(Long id, AppUsers newUser) {
+    public AppUser updateUser(Long id, AppUser newUser) {
         if (userRepository.existsById(id)) {
             newUser.setId(id);
             return userRepository.save(newUser);
@@ -52,15 +53,20 @@ public class AppUserService {
     }
     
     
-    public Optional<AppUsers> getUserByUsername(String username) {
+    public boolean verifyPassword(AppUser user, String password) {
+        return password.equals(user.getPassword());
+    }
+    
+    
+    public Optional<AppUser> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
     
     
     public ResponseEntity<String> addToFavorites(Long userId, Long bookId) {
-        Optional<AppUsers> optionalUser = userRepository.findById(userId);
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-            AppUsers user = optionalUser.get();
+            AppUser user = optionalUser.get();
             List<Long> favoriteBooksIds = user.getFavoriteBooksIds();
             if (!favoriteBooksIds.contains(bookId))
             {
@@ -76,9 +82,9 @@ public class AppUserService {
     
     
     public ResponseEntity<String> removeFromFavorites(Long userId, Long bookId) {
-        Optional<AppUsers> optionalUser = userRepository.findById(userId);
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-            AppUsers user = optionalUser.get();
+            AppUser user = optionalUser.get();
             List<Long> favoriteBooksIds = user.getFavoriteBooksIds();
             if (favoriteBooksIds.contains(bookId))
             {
@@ -94,9 +100,9 @@ public class AppUserService {
     
     
     public List<Book> getFavoriteBooks(Long userId) {
-        Optional<AppUsers> optionalUser = userRepository.findById(userId);
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-        	AppUsers user = optionalUser.get();
+        	AppUser user = optionalUser.get();
             List<Long> favoriteBookIds = user.getFavoriteBooksIds(); 
             return bookRepository.findAllById(favoriteBookIds);
         } else {
@@ -106,9 +112,36 @@ public class AppUserService {
     
     
     public ResponseEntity<String> addToCart(Long userId, Long bookId) {
-    	Optional<AppUsers> optionalUser = userRepository.findById(userId);
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
+
+        if (optionalUser.isPresent() && optionalBook.isPresent()) {
+            AppUser user = optionalUser.get();
+            Book book = optionalBook.get();
+            
+            // Check if the book is already in the user's cart
+            List<Long> cart = user.getCartBooksIds();
+            if (!cart.contains(book.getId()))
+            {
+            	// Add the book to the user's cart
+                cart.add(book.getId());
+                user.setCartBooksIds(cart);
+                userRepository.save(user);
+            }
+            
+            return new ResponseEntity<>("Book added to cart successfully", HttpStatus.OK);
+        }
+        else
+        {
+            return new ResponseEntity<>("User or Book not found", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
+    public ResponseEntity<String> removeFromCart(Long userId, Long bookId) {
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-            AppUsers user = optionalUser.get();
+            AppUser user = optionalUser.get();
             List<Long> cart = user.getCartBooksIds();
             if (cart.contains(bookId))
             {
@@ -123,17 +156,15 @@ public class AppUserService {
     }
     
     
-    public ResponseEntity<String> removeFromCart(Long userId, Long bookId) {
-        Optional<AppUsers> optionalUser = userRepository.findById(userId);
+    public ResponseEntity<String> removeAllFromCart(Long userId) {
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-            AppUsers user = optionalUser.get();
+            AppUser user = optionalUser.get();
             List<Long> cart = user.getCartBooksIds();
-            if (cart.contains(bookId))
-            {
-            	cart.remove(bookId);
-            }
+            cart = new ArrayList<>();
             user.setCartBooksIds(cart);
             userRepository.save(user);
+            
             return new ResponseEntity<>("Book added to favorites successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
@@ -142,10 +173,9 @@ public class AppUserService {
     
     
     public List<Book> getCart(Long userId) {
-        Optional<AppUsers> optionalUser = userRepository.findById(userId);
+        Optional<AppUser> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
-        	AppUsers user = optionalUser.get();
-            List<Long> cart = user.getCartBooksIds(); 
+            List<Long> cart = optionalUser.get().getCartBooksIds(); 
             return bookRepository.findAllById(cart);
         } else {
             return Collections.emptyList();

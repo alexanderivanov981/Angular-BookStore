@@ -1,6 +1,7 @@
 package com.softuni.angular.project.BookStore.users;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,51 +25,66 @@ public class AppUserController {
 	@Autowired
     private AppUserService userService;
 	
-	
 	@PostMapping
-    public ResponseEntity<AppUsers> createUser(@RequestBody AppUsers user) {
-        AppUsers newUser = userService.createUser(user);
+    public ResponseEntity<AppUser> createUser(@RequestBody AppUser user) {
+        AppUser newUser = userService.createUser(user);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 	
 	
 	@GetMapping("/{id}")
-    public ResponseEntity<AppUsers> getUserById(@PathVariable Long id) {
-        Optional<AppUsers> user = userService.getUserById(id);
+    public ResponseEntity<AppUser> getUserById(@PathVariable Long id) {
+        Optional<AppUser> user = userService.getUserById(id);
         return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 	
 	
-	@GetMapping("/username/{username}")
-    public ResponseEntity<AppUsers> getUserByUsername(@PathVariable String username) {
-        Optional<AppUsers> user = userService.getUserByUsername(username);
+	@GetMapping("/{username}")
+    public ResponseEntity<AppUser> getUserByUsername(@PathVariable String username) {
+        Optional<AppUser> user = userService.getUserByUsername(username);
         return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-	
 
+	
     @GetMapping
-    public ResponseEntity<List<AppUsers>> getAllUsers() {
-        List<AppUsers> users = userService.getAllUsers();
+    public ResponseEntity<List<AppUser>> getAllUsers() {
+        List<AppUser> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<AppUsers> updateUser(@PathVariable Long id, @RequestBody AppUsers user) {
-        AppUsers updatedUser = userService.updateUser(id, user);
+    public ResponseEntity<AppUser> updateUser(@PathVariable Long id, @RequestBody AppUser user) {
+        AppUser updatedUser = userService.updateUser(id, user);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId, @RequestBody Map<String, String> requestBody) {
+        // Retrieve user information from the database
+        Optional<AppUser> optionalUser = userService.getUserById(userId);
+        String password = requestBody.get("password");
+        
+        if (optionalUser.isPresent()) {
+            AppUser user = optionalUser.get();
+            
+            // Verify password
+            if (userService.verifyPassword(user, password)) {
+                // Passwords match, delete the user
+                userService.deleteUser(userId);
+                return ResponseEntity.ok().build(); // User deleted successfully
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
+            }
+        } else {
+            return ResponseEntity.notFound().build(); // User not found
+        }
     }
     
     
@@ -93,7 +109,7 @@ public class AppUserController {
     }
     
     
-    @PostMapping("/{userId}/cart")
+    @PutMapping("/{userId}/cart")
     public ResponseEntity<?> addToCart(@PathVariable Long userId, @RequestBody Long bookId)
     {
     	userService.addToCart(userId, bookId);
@@ -104,6 +120,13 @@ public class AppUserController {
     @DeleteMapping("/{userId}/cart/{bookId}")
     public ResponseEntity<?> removeFromCart(@PathVariable Long userId, @PathVariable Long bookId) {
         userService.removeFromCart(userId, bookId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    
+    @DeleteMapping("/{userId}/cart")
+    public ResponseEntity<?> removeAllFromCart(@PathVariable Long userId) {
+        userService.removeAllFromCart(userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
