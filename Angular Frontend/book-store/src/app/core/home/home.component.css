@@ -1,6 +1,6 @@
 .home-container {
-  max-width: 1280px;
   margin: 0 auto;
+  max-width: 1280px;
 }
 
 .hr-text-hr {
@@ -10,8 +10,8 @@
 
 .hr-line {
   flex-grow: 1;
-  border-top: 1px solid #c0c0c0;
   margin: 0 10px;
+  border-top: 1px solid #c0c0c0;
 }
 
 .hr-text {
@@ -19,20 +19,20 @@
 }
 
 .book {
-  display: inline-block;
-  padding: 20px;
-  vertical-align: top;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  margin-bottom: 40px;
   height: 400px;
+  padding: 20px;
   line-height: 25px;
+  margin-bottom: 40px;
+  vertical-align: top;
+  display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .book:hover {
-  border: 1px solid #bdbdbd;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
   cursor: pointer;
+  border: 1px solid #bdbdbd;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .book-cover {
@@ -46,20 +46,20 @@
 }
 
 .book-title {
+  height: 90px;
+  max-height: 55px;
   font-size: 20px;
   margin-top: 0;
   margin-bottom: 0;
   margin: 5px 0;
-  word-wrap: break-word;
-  height: 90px;
-  max-height: 55px;
   overflow: hidden;
+  word-wrap: break-word;
 }
 
 .book-author {
-  font-style: italic;
-  color: #666;
   margin: 5px 0;
+  color: #666;
+  font-style: italic;
 }
 
 .price-icons-container {
@@ -68,9 +68,9 @@
 }
 
 .book-price {
+  font-size: 17px;
   font-weight: bold;
   margin: 5px 13px 5px 0;
-  font-size: 17px;
 }
 
 .icons {
@@ -79,15 +79,15 @@
 }
 
 .favorites-icon {
-  margin-left: 25px;
-  cursor: pointer;
   width: 28px;
   height: 28px;
+  cursor: pointer;
+  margin-left: 25px;
 }
 
 .cart-icon {
-  margin-left: 15px;
-  cursor: pointer;
   width: 28px;
   height: 28px;
+  cursor: pointer;
+  margin-left: 15px;
 }

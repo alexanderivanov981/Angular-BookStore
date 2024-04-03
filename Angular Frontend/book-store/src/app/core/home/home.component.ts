@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../shared/book';
 import { Router } from '@angular/router';
-import { DBService } from '../../shared/db-service.service';
+import { DBService } from '../../shared/db.service';
 import { AuthService } from '../../shared/auth.service';
 import { User } from '../../shared/user';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +17,7 @@ export class HomeComponent implements OnInit{
 
   constructor(private router: Router,
               private dbService: DBService, 
-              private authService: AuthService,
-              private snackBar: MatSnackBar) {}
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     this.readAllBooks();
@@ -41,7 +39,7 @@ export class HomeComponent implements OnInit{
     event.stopPropagation();
     if (!this.authService.isLoggedIn())
     {
-      this.router.navigate(["/no-permissions"]);
+      this.router.navigate(["/unauthorized"]);
       return;
     }
 
@@ -62,6 +60,11 @@ export class HomeComponent implements OnInit{
 
   addToCart(event: MouseEvent, bookId: number): void {
     event.stopPropagation();
+    if (!this.authService.isLoggedIn())
+    {
+      this.router.navigate(["/unauthorized"]);
+      return;
+    }
 
     const user: User | null = this.authService.getCurrentUser();
     if (user)

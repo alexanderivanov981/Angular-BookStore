@@ -1,11 +1,11 @@
 .login-container {
-    max-width: 400px;
     margin: 0 auto;
+    max-width: 400px;
+    font-size: 16px;
     padding: 20px;
+    margin-top: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-top: 30px;
-    font-size: 16px;
 }
 
 h2 {
@@ -21,12 +21,11 @@ label {
 input[type="text"],
 input[type="password"] {
     width: 98%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 18px;
     padding: 5px;
     padding-right: 0px;
-    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
   
 .login-container form {
@@ -41,16 +40,16 @@ input[type="password"] {
 .login-container form button {
     padding: 10px;
     font-size: 16px;
-    background-color: #007bff;
     color: #fff;
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .login-container form button:disabled {
-    background-color: #ccc;
     cursor: not-allowed;
+    background-color: #ccc;
 }
 
 .error-message {

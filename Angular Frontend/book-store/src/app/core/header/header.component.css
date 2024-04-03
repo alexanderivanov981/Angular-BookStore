@@ -1,44 +1,44 @@
 .header-wrapper {
-    max-width: 1280px;
     margin: 0 auto;
+    max-width: 1280px;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 40px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    align-items: center;
     margin-bottom: 10px;
+    justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
+    color: #333;
     font-size: 40px;
     font-weight: bold;
-    color: #333;
     margin-right: 20px;
     cursor: pointer;
 }
 
 .user-section {
+    height: 60px;
     display: flex;
     align-items: center;
-    height: 60px;
 }
 
 .login-register-container,
 .profile-container {
+    height: 100%;
     display: flex;
     align-items: center;
-    height: 100%; /* Fill the height of the user section */
 }
 
 .login-register-label {
+    height: 100%;
     font-size: 20px;
     color: #333;
     margin-left: 10px;
     cursor: pointer;
-    height: 100%;
     display: flex;
     align-items: center;
 }

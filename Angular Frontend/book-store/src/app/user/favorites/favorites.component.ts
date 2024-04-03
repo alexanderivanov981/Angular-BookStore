@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Book } from 'src/app/shared/book';
 import { User } from 'src/app/shared/user';
-import { DBService } from 'src/app/shared/db-service.service';
+import { DBService } from 'src/app/shared/db.service';
 
 @Component({
   selector: 'app-favorites',

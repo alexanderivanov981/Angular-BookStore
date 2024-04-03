@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="additional-info" *ngIf="(favoriteBooks$ | async) as favoriteBooks">
+    <div class="book-interactions-section" *ngIf="(favoriteBooks$ | async) as favoriteBooks">
         <div class="price">${{ book?.price }}</div>
         <div *ngIf="book && book.id" class="buttons-container">
             <button *ngIf="isBookInCart()" (click)="removeFromCart()" class="add-to-cart-btn">Remove from Cart</button>

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="cart-container">
     <h2>Cart</h2>
 
-    <div>
+    <div *ngIf="cartBooks.length > 0; else emptyCartMessage">
         <div class="book" *ngFor="let book of cartBooks" (click)="navigateToBookDetails(book.id)">
             <img class="book-cover" [src]="book.coverUrl" alt="Book Cover">
             <div class="book-details">
@@ -24,4 +24,12 @@
             </div>
         </div>
     </div>
+
+    <ng-template #emptyCartMessage>
+        <div class="empty-cart-message">
+            <h1>Your cart is empty</h1>
+            <p>Add products to the cart before proceeding.</p>
+            <button class="go-to-home-btn" routerLink="/">GO TO HOME PAGE</button>
+        </div>
+    </ng-template>
 </div>

@@ -1,11 +1,11 @@
 .container {
-  max-width: 1280px;
   margin: 0 auto;
+  max-width: 1280px;
 }
 
 .my-profile {
-  max-width: 1280px;
   margin: 20px auto;
+  max-width: 1280px;
 }
 
 .profile-sections {
@@ -14,12 +14,12 @@
 
 .profile-section {
   flex: 1;
-  border: 1px solid #ccc; 
   padding: 20px;
   font-size: 25px;
+  cursor: pointer;
+  border: 1px solid #ccc; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.5s ease, transform 0.5s ease;
-  cursor: pointer;
 }
 
 .profile-section:not(:last-child) {
@@ -28,8 +28,8 @@
 
 .section-content {
   display: flex;
-  align-items: center;
   padding: 10px;
+  align-items: center;
 }
 
 .section-content h3 {
@@ -37,8 +37,8 @@
 }
 
 .profile-section:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .icon {

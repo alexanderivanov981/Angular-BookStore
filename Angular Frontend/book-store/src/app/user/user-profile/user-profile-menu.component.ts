@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent {
+export class UserProfileMenuComponent {
   userProfileImage: string = "assets/images/user-profile-icon.png";
 
   constructor(private authService: AuthService, private router: Router) {}
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/']); // Redirect to home.
+    this.router.navigate(['/']);
   }
 }

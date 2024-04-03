@@ -10,8 +10,8 @@ import { Observable } from "rxjs";
     constructor(private authService: AuthService, private router: Router) {}
   
     canActivate(
-      next: ActivatedRouteSnapshot,
-      state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      _next: ActivatedRouteSnapshot,
+      _state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (this.authService.isLoggedIn()) {
         return true;
       } else {

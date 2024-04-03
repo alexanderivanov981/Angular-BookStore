@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
-import { DBService } from 'src/app/shared/db-service.service';
+import { DBService } from 'src/app/shared/db.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ constructor(private authService: AuthService,
 
   onSubmit() {
     this.authService.register(this.registerData.username, this.registerData.email, this.registerData.password).subscribe(
-      (response) => {
+      () => {
         this.dbService.openSnackBar('User registered successfully.', '');
         this.router.navigate(['/successful-registration']);
       },

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
-import { DBService } from 'src/app/shared/db-service.service';
+import { DBService } from 'src/app/shared/db.service';
 
 @Component({
   selector: 'app-login',

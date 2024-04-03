@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { User } from 'src/app/shared/user';
-import { DBService } from 'src/app/shared/db-service.service';
+import { DBService } from 'src/app/shared/db.service';
 
 @Component({
   selector: 'app-delete-profile',
@@ -22,7 +22,7 @@ export class DeleteProfileComponent {
         () => {
           this.dbService.openSnackBar('User successfully deleted.', '');
           this.authService.logout();
-          this.router.navigate(['/']); // Navigate home.
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error(error);

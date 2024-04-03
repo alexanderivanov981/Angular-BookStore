@@ -1,7 +1,7 @@
 .book-container {
     display: flex;
-    max-width: 1280px;
     margin: 0 auto;
+    max-width: 1280px;
     align-items: flex-start;
     margin-top: 30px;
 }
@@ -27,7 +27,7 @@
     text-transform: none; 
 }
 
-.additional-info {
+.book-interactions-section {
     padding: 20px;
     flex: 0 0 200px;
     text-align: center;
