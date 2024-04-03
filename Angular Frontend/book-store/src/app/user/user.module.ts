@@ -5,8 +5,9 @@ import { DeleteProfileComponent } from './delete-profile/delete-profile.componen
 import { FavoritesComponent } from './favorites/favorites.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile-menu.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     UserProfileComponent

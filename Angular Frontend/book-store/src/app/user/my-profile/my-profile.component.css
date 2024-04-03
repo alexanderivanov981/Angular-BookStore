@@ -32,7 +32,6 @@
   padding: 10px;
 }
 
-
 .section-content h3 {
   margin: 0;
 }
@@ -42,22 +41,8 @@
   transform: translateY(3px);
 }
 
-.favorite-icon {
+.icon {
   width: 40px;
-  margin-right: 10px;
-}
-
-.cart-icon {
-  width: 110px;
-  height: 110px;
-}
-
-.logout-icon {
-  width: 33px;
-  margin-right: 10px;
-}
-
-.delete-profile-icon {
-  width: 40px;
+  height: auto;
   margin-right: 10px;
 }

@@ -29,18 +29,6 @@
         </div>
     </div>
 
-    <!-- <div class="additional-info">
-        <div class="price">${{ book?.price }}</div>
-        <div *ngIf="book !== null && book.id !== undefined" class="buttons-container">
-            <button *ngIf="isBookInCart()" (click)="removeFromCart()" class="add-to-cart-btn">Remove from Cart</button>
-            <button *ngIf="!isBookInCart()" (click)="addToCart(book.id)" class="add-to-cart-btn">Add to Cart</button>
-    
-            <button *ngIf="isBookInFavorites()" (click)="removeFromFavorites()" class="add-to-favorites-btn">Remove from Favorites</button>
-            <button *ngIf="!isBookInFavorites()" (click)="addToFavorites(book.id)" class="add-to-favorites-btn">Add to Favorites</button>
-        </div>
-    </div> -->
-
-
     <div class="additional-info" *ngIf="(favoriteBooks$ | async) as favoriteBooks">
         <div class="price">${{ book?.price }}</div>
         <div *ngIf="book && book.id" class="buttons-container">

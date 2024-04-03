@@ -23,6 +23,9 @@
   padding: 20px;
   vertical-align: top;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 40px;
+  height: 400px;
+  line-height: 25px;
 }
 
 .book:hover {
@@ -33,7 +36,7 @@
 }
 
 .book-cover {
-  width: 172px;
+  width: 173px;
   height: 265px;
 }
 
@@ -48,6 +51,9 @@
   margin-bottom: 0;
   margin: 5px 0;
   word-wrap: break-word;
+  height: 90px;
+  max-height: 55px;
+  overflow: hidden;
 }
 
 .book-author {
@@ -73,14 +79,15 @@
 }
 
 .favorites-icon {
-  margin-left: 18px;
+  margin-left: 25px;
   cursor: pointer;
   width: 28px;
   height: 28px;
 }
 
 .cart-icon {
+  margin-left: 15px;
   cursor: pointer;
-  width: 72px;
-  height: 72px;
+  width: 28px;
+  height: 28px;
 }

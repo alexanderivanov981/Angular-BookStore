@@ -5,7 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { NoPermissionsComponent } from './no-permissions/no-permissions.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserModule } from '../user/user.module';
@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SuccessfulRegistrationComponent } from './successful-registration/successful-registration.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 
@@ -23,10 +25,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    NoPermissionsComponent,
+    UnauthorizedComponent,
     RegisterComponent,
     SuccessfulRegistrationComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent,
+    ContactsComponent
   ],
   imports: [
     CommonModule,

@@ -13,8 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class HomeComponent implements OnInit{
   books: Book[] = [];
-  favoritesIconUrl : string = "/assets/images/heart-icon-red.jpg";
-  shoppingCartIconUrl: string = "/assets/images/shopping-cart-icon.PNG";
+  favoritesIconUrl : string = "assets/images/heart-icon-red.jpg";
+  shoppingCartIconUrl: string = "assets/images/cart-add.png ";
 
   constructor(private router: Router,
               private dbService: DBService, 

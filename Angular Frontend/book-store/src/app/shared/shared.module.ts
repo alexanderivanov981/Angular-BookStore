@@ -4,6 +4,7 @@ import { AuthGuard } from './auth-guard';
 import { AuthService } from './auth.service';
 import { DBService } from './db-service.service';
 import { RouterModule } from '@angular/router';
+import { LoginRegisterGuard } from './login-register-guard';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
   providers: [
     AuthGuard,
     AuthService,
-    DBService
+    DBService,
+    LoginRegisterGuard
   ]
 })
 export class SharedModule { }

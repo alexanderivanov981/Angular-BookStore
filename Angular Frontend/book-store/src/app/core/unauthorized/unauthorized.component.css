@@ -1,0 +1,13 @@
+.unauthorized-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .unauthorized-container h2 {
+    color: #f00;
+    font-size: 24px;
+  }
+  
+  .unauthorized-container p {
+    font-size: 18px;
+  }

@@ -1,32 +1,32 @@
 <div class="container">
-    <h2>My profile</h2>
-  </div>
+  <h2>My profile</h2>
   
   <div class="my-profile">
     <div class="profile-sections">
       <div routerLink="/favorites" class="profile-section">
         <div class="section-content">
-          <img [src]="favoritesIconUrl" alt="Heart Icon" class="favorite-icon ">
+          <img [src]="favoritesIconUrl" alt="Heart Icon" class="icon">
           <h3>Favorites</h3>
         </div>
       </div>
       <div class="profile-section">
         <div routerLink="/cart" class="section-content">
-          <img [src]="shoppingCartIconUrl" alt="Cart Icon" class="cart-icon ">
+          <img [src]="shoppingCartIconUrl" alt="Cart Icon" class="icon">
           <h3>Cart</h3>
         </div>
       </div>
       <div (click)="logout()" class="profile-section">
         <div class="section-content">
-          <img [src]="logoutIconUrl" alt="Logout Icon" class="logout-icon ">
+          <img [src]="logoutIconUrl" alt="Logout Icon" class="icon">
           <h3>Logout</h3>
         </div>
       </div>
       <div class="profile-section">
         <div routerLink="/delete-profile" class="section-content">
-          <img [src]="deleteProfileIconUrl" alt="Delete Profile Icon" class="delete-profile-icon">
+          <img [src]="deleteProfileIconUrl" alt="Delete Profile Icon" class="icon">
           <h3>Delete Profile</h3>
         </div>
       </div>
     </div>
   </div>
+</div>

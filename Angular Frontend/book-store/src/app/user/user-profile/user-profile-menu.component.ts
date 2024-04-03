@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
-  userProfileImage: string = "https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png";
+  userProfileImage: string = "assets/images/user-profile-icon.png";
 
   constructor(private authService: AuthService, private router: Router) {}
 

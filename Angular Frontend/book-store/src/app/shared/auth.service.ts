@@ -19,7 +19,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
- 
 
   login(username: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.authAPI}/login`, { username, password })
@@ -51,12 +50,12 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY);
-    this.user = null; // Clear current user upon logout
+    this.user = null;
   }
 
   private setUser(user: User): void {
     this.user = user;
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user)); // Store current user in local storage
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
 
   getCurrentUser(): User | null {

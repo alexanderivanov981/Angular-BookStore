@@ -13,7 +13,7 @@ import { DBService } from 'src/app/shared/db-service.service';
 export class CartComponent implements OnInit {
   cartBooks: Book[] = [];
   favoritesIconUrl: string = "/assets/images/heart-icon-red.jpg";
-  shoppingCartIconUrl: string = "/assets/images/remove-shopping-cart-icon.png";
+  shoppingCartIconUrl: string = "/assets/images/cart-remove.png";
 
   constructor(
     private dbService: DBService,

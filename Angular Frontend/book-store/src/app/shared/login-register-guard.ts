@@ -6,17 +6,17 @@ import { Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
   })
-  export class AuthGuard implements CanActivate {
+  export class LoginRegisterGuard implements CanActivate {
     constructor(private authService: AuthService, private router: Router) {}
   
     canActivate(
       next: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (this.authService.isLoggedIn()) {
-        return true;
-      } else {
-        this.router.navigate(['/unauthorized']);
+        this.router.navigate(['/my-profile']);
         return false;
+      } else {
+        return true;
       }
     }
     

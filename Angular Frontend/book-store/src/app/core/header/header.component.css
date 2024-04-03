@@ -1,14 +1,14 @@
 .header-wrapper {
-    max-width: 1280px; /* Set the maximum width */
-    margin: 0 auto; /* Center the container */
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between; /* Align items to the left and right */
+    justify-content: space-between;
     align-items: center;
     padding: 40px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
 }
 
@@ -23,12 +23,14 @@
 .user-section {
     display: flex;
     align-items: center;
+    height: 60px;
 }
 
 .login-register-container,
 .profile-container {
     display: flex;
     align-items: center;
+    height: 100%; /* Fill the height of the user section */
 }
 
 .login-register-label {
@@ -36,4 +38,7 @@
     color: #333;
     margin-left: 10px;
     cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

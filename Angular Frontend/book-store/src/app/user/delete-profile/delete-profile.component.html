@@ -1,6 +1,16 @@
 <div class="container">
-    <h2>Confirm Deletion</h2>
-    <p>Please enter your password to confirm deletion:</p>
-    <input type="password" placeholder="Enter your password" #password>
-    <button (click)="deleteUser(password.value)">Confirm Deletion</button>
+  <h2>Confirm Deletion</h2>
+  <form #passwordForm="ngForm" (ngSubmit)="deleteUser(passwordForm.value.password)">
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" minlength="6" required ngModel #password="ngModel">
+      <div *ngIf="passwordForm.controls['password'].errors?.['required'] && (passwordForm.controls['password'].dirty || passwordForm.controls['password'].touched)" class="error-message">
+        Password is required.
+      </div>
+      <div *ngIf="passwordForm.controls['password'].errors?.['minlength'] && (passwordForm.controls['password'].dirty || passwordForm.controls['password'].touched)" class="error-message">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+    <button type="submit" [disabled]="passwordForm.invalid">Confirm Deletion</button>
+  </form>
 </div>

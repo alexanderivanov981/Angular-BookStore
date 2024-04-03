@@ -56,3 +56,7 @@ input[type="password"] {
 .error-message {
     color: red;
 }
+
+.login-button:hover {
+    background-color: #0056b3;
+}

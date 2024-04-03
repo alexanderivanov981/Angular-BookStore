@@ -13,7 +13,7 @@ import { DBService } from 'src/app/shared/db-service.service';
 export class FavoritesComponent {
   books: Book[] = [];
   favoritesIconUrl: string = "assets/images/heart-icon-red.jpg";
-  shoppingCartIconUrl: string = "assets/images/shopping-cart-icon.PNG";
+  shoppingCartIconUrl: string = "assets/images/cart-add.png";
 
   constructor(
     private dbService: DBService,

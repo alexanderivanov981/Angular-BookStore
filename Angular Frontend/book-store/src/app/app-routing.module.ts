@@ -10,20 +10,25 @@ import { MyProfileComponent } from './user/my-profile/my-profile.component';
 import { FavoritesComponent } from './user/favorites/favorites.component';
 import { CartComponent } from './user/cart/cart.component';
 import { DeleteProfileComponent } from './user/delete-profile/delete-profile.component';
-import { NoPermissionsComponent } from './core/no-permissions/no-permissions.component';
+import { UnauthorizedComponent } from './core/unauthorized/unauthorized.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { AboutComponent } from './core/about/about.component';
+import { ContactsComponent } from './core/contacts/contacts.component';
+import { LoginRegisterGuard } from './shared/login-register-guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'contacts', component: ContactsComponent},
   { path: 'book/:id', component: BookDetailsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'successful-registration', component: SuccessfulRegistrationComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LoginRegisterGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [LoginRegisterGuard] },
+  { path: 'successful-registration', component: SuccessfulRegistrationComponent, canActivate: [LoginRegisterGuard] },
   { path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard] },
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'delete-profile', component: DeleteProfileComponent, canActivate: [AuthGuard] },
-  { path: 'no-permissions', component: NoPermissionsComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' } // Redirect invalid URLs to NotFoundComponent
 ];
