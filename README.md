@@ -19,6 +19,8 @@ The backend of the Book Store project is developed using the Spring Boot framewo
 - CRUD operations for managing users and books
 - Adding and removing books from the user's cart
 - Adding and removing books from the user's favorites
+- Logout
+- Delete profile
 
 ## Frontend (Angular)
 
